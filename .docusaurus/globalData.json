@@ -1,0 +1,288 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "index",
+          "docs": [
+            {
+              "id": "index",
+              "path": "/docs/"
+            },
+            {
+              "id": "modules/module1/Ingestion/week1",
+              "path": "/docs/modules/module1/Ingestion/week1",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module1/Ingestion/week2",
+              "path": "/docs/modules/module1/Ingestion/week2",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module1/Ingestion/week3",
+              "path": "/docs/modules/module1/Ingestion/week3",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module1/Ingestion/week4",
+              "path": "/docs/modules/module1/Ingestion/week4",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module1/OCR/week1",
+              "path": "/docs/modules/module1/OCR/week1",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module1/OCR/week2",
+              "path": "/docs/modules/module1/OCR/week2",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module1/OCR/week3",
+              "path": "/docs/modules/module1/OCR/week3",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module1/OCR/week4",
+              "path": "/docs/modules/module1/OCR/week4",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module1/Storage/week1",
+              "path": "/docs/modules/module1/Storage/week1",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module1/Storage/week2",
+              "path": "/docs/modules/module1/Storage/week2",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module1/Storage/week3",
+              "path": "/docs/modules/module1/Storage/week3",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module1/Storage/week4",
+              "path": "/docs/modules/module1/Storage/week4",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module2/teamA/week5",
+              "path": "/docs/modules/module2/teamA/week5",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module2/teamA/week6",
+              "path": "/docs/modules/module2/teamA/week6",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module2/teamA/week7",
+              "path": "/docs/modules/module2/teamA/week7",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module2/teamA/week8",
+              "path": "/docs/modules/module2/teamA/week8",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module2/teamB/week5",
+              "path": "/docs/modules/module2/teamB/week5",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module2/teamB/week6",
+              "path": "/docs/modules/module2/teamB/week6",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module2/teamB/week7",
+              "path": "/docs/modules/module2/teamB/week7",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module2/teamB/week8",
+              "path": "/docs/modules/module2/teamB/week8",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module2/teamC/week5",
+              "path": "/docs/modules/module2/teamC/week5",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module2/teamC/week6",
+              "path": "/docs/modules/module2/teamC/week6",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module2/teamC/week7",
+              "path": "/docs/modules/module2/teamC/week7",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module2/teamC/week8",
+              "path": "/docs/modules/module2/teamC/week8",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module3/teamA/week10",
+              "path": "/docs/modules/module3/teamA/week10",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module3/teamA/week11",
+              "path": "/docs/modules/module3/teamA/week11",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module3/teamA/week12",
+              "path": "/docs/modules/module3/teamA/week12",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module3/teamA/week9",
+              "path": "/docs/modules/module3/teamA/week9",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module3/teamB/week10",
+              "path": "/docs/modules/module3/teamB/week10",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module3/teamB/week11",
+              "path": "/docs/modules/module3/teamB/week11",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module3/teamB/week12",
+              "path": "/docs/modules/module3/teamB/week12",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module3/teamB/week9",
+              "path": "/docs/modules/module3/teamB/week9",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module3/teamC/week10",
+              "path": "/docs/modules/module3/teamC/week10",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module3/teamC/week11",
+              "path": "/docs/modules/module3/teamC/week11",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module3/teamC/week12",
+              "path": "/docs/modules/module3/teamC/week12",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module3/teamC/week9",
+              "path": "/docs/modules/module3/teamC/week9",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module4/teamA/week13",
+              "path": "/docs/modules/module4/teamA/week13",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module4/teamA/week14",
+              "path": "/docs/modules/module4/teamA/week14",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module4/teamA/week15",
+              "path": "/docs/modules/module4/teamA/week15",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module4/teamA/week16",
+              "path": "/docs/modules/module4/teamA/week16",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module4/teamB/week13",
+              "path": "/docs/modules/module4/teamB/week13",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module4/teamB/week14",
+              "path": "/docs/modules/module4/teamB/week14",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module4/teamB/week15",
+              "path": "/docs/modules/module4/teamB/week15",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module4/teamB/week16",
+              "path": "/docs/modules/module4/teamB/week16",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module4/teamC/week13",
+              "path": "/docs/modules/module4/teamC/week13",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module4/teamC/week14",
+              "path": "/docs/modules/module4/teamC/week14",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module4/teamC/week15",
+              "path": "/docs/modules/module4/teamC/week15",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "modules/module4/teamC/week16",
+              "path": "/docs/modules/module4/teamC/week16",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "overview",
+              "path": "/docs/overview"
+            },
+            {
+              "id": "test-snippet",
+              "path": "/docs/test-snippet"
+            },
+            {
+              "id": "uploads/README",
+              "path": "/docs/uploads/"
+            },
+            {
+              "id": "uploads/upload-guide",
+              "path": "/docs/uploads/upload-guide"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "docsSidebar": {
+              "link": {
+                "path": "/docs/modules/module1/Ingestion/week1",
+                "label": "Week 01"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

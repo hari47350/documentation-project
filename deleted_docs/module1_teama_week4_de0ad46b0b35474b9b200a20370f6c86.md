@@ -1,0 +1,150 @@
+---
+id: week4
+title: Week 04 — Teama
+sidebar_label: Week 04
+---
+
+# &lt;a id="Xfbbf4568db0bd764ffd07ece5b1472bafc03801"&gt;&lt;/a&gt; Presentation Document: Exception Handling in Code
+
+## &lt;a id="meeting-objective"&gt;&lt;/a&gt;Meeting Objective
+
+Explain best practices for exception handling to the development team with examples, focusing on predictable error management, logging, and providing clear feedback to users\.
+
+## &lt;a id="agenda"&gt;&lt;/a&gt;Agenda
+
+1. Introduction to Exception Handling
+2. Importance of Exception Handling
+3. Key Principles of Exception Handling
+	- Using try\-except blocks
+	- Specific exception types
+	- Raising exceptions
+	- Logging errors
+	- Failing gracefully
+4. Examples and Best Practices
+5. Q&amp;A
+
+## &lt;a id="introduction-to-exception-handling"&gt;&lt;/a&gt;1\. Introduction to Exception Handling
+
+- Exception handling is the process of anticipating and managing runtime errors\.
+- It ensures the program can continue or fail gracefully without crashing\.
+
+## &lt;a id="importance-of-exception-handling"&gt;&lt;/a&gt;2\. Importance of Exception Handling
+
+- Prevents unexpected program crashes\.
+- Provides meaningful error messages for troubleshooting\.
+- Helps maintain software reliability and robustness\.
+
+## &lt;a id="key-principles-of-exception-handling"&gt;&lt;/a&gt;3\. Key Principles of Exception Handling
+
+### &lt;a id="using-try-except-blocks"&gt;&lt;/a&gt;3\.1 Using try\-except Blocks
+
+- Wrap code that might fail in a try block\.
+- Handle expected errors in the except block\.
+
+```text title="week4.md snippet 1"
+__Example:__
+```
+
+```text title="week4.md snippet 2"
+try:
+```
+
+```text title="week4.md snippet 3"
+      \# 1\. The Risky Action   
+```
+  
+```text title="week4.md snippet 4"
+    result = 10 / divisor  
+except ZeroDivisionError:  
+    print\("Error: Cannot divide by zero\."\)
+```
+
+### &lt;a id="specific-exception-types"&gt;&lt;/a&gt;3\.2 Specific Exception Types
+
+- Catch specific exceptions instead of using a generic except\.
+- it allows you to handle different errors in different ways and prevents you from accidentally hiding unexpected bugs\.
+- Avoid catching too broadly to prevent masking other errors\.
+
+```text title="week4.md snippet 5"
+__Example:__
+```
+
+```text title="week4.md snippet 6"
+try:  
+    user\_input = int\(input\("Enter a number: "\)\)  
+except ValueError:  
+    print\("Invalid input: Please enter a valid integer\."\)
+```
+
+### &lt;a id="raising-exceptions"&gt;&lt;/a&gt;3\.3 Raising Exceptions
+
+- Raise exceptions when invalid conditions occur\.
+- Provides clarity and control over error conditions\.
+
+```text title="week4.md snippet 7"
+__Example:__
+```
+
+```python title="week4.md snippet 8"
+def calculate\_area\(radius\):  
+    if radius < 0:  
+        raise ValueError\("Radius cannot be negative"\)  
+    return 3\.14 \* radius \*\* 2
+```
+
+### &lt;a id="logging-errors"&gt;&lt;/a&gt;3\.4 Logging Errors
+
+- Use logging to record error details for troubleshooting\.
+- Avoid printing sensitive data directly to users\.
+
+```text title="week4.md snippet 9"
+__Example:__
+```
+
+```python title="week4.md snippet 10"
+import logging  
+```
+  
+```text title="week4.md snippet 11"
+logging\.basicConfig\(level=logging\.ERROR\)  
+try:  
+    process\_data\(data\)  
+except KeyError as e:  
+    logging\.error\(f"Missing key in data: \{e\}"\)  
+    print\("Error processing data\. Contact support\."\)
+```
+
+### &lt;a id="failing-gracefully"&gt;&lt;/a&gt;3\.5 Failing Gracefully
+
+- Ensure the program can recover or exit safely\.
+- Provide user\-friendly messages and cleanup resources if needed\.
+
+```text title="week4.md snippet 12"
+__Example:__
+```
+
+```text title="week4.md snippet 13"
+try:
+```
+
+```text title="week4.md snippet 14"
+          \# 1\. The Risky Action   
+    file = open\('data\.txt'\)  
+except FileNotFoundError:
+```
+
+```text title="week4.md snippet 15"
+         \# 2\. The Graceful Recovery  
+    print\("File not found\. Please check the file path\."\)  
+else:
+```
+
+```text title="week4.md snippet 16"
+           \# 3\. The "Success" Path and Cleanup  
+    data = file\.read\(\)  
+    file\.close\(\) \# <\-\- Important cleanup step
+```
+
+## &lt;a id="qa"&gt;&lt;/a&gt;
+
+&lt;a id="notes-for-presenter"&gt;&lt;/a&gt;

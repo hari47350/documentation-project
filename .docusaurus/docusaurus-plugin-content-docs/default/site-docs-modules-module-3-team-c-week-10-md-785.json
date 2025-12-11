@@ -1,0 +1,27 @@
+{
+  "id": "modules/module3/teamC/week10",
+  "title": "Week 10 — Teamc",
+  "description": "No document uploaded yet.",
+  "source": "@site/docs/modules/module3/teamC/week10.md",
+  "sourceDirName": "modules/module3/teamC",
+  "slug": "/modules/module3/teamC/week10",
+  "permalink": "/docs/modules/module3/teamC/week10",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week10",
+    "title": "Week 10 — Teamc",
+    "sidebar_label": "Week 10"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week 09",
+    "permalink": "/docs/modules/module3/teamB/week9"
+  },
+  "next": {
+    "title": "Week 11",
+    "permalink": "/docs/modules/module3/teamC/week11"
+  }
+}

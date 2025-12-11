@@ -1,0 +1,27 @@
+{
+  "id": "modules/module2/teamB/week7",
+  "title": "Week7 — Teamb",
+  "description": "No document uploaded yet. Previous upload was deleted.",
+  "source": "@site/docs/modules/module2/teamB/week7.md",
+  "sourceDirName": "modules/module2/teamB",
+  "slug": "/modules/module2/teamB/week7",
+  "permalink": "/docs/modules/module2/teamB/week7",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week7",
+    "title": "Week7 — Teamb",
+    "sidebar_label": "Week7"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week6",
+    "permalink": "/docs/modules/module2/teamB/week6"
+  },
+  "next": {
+    "title": "Week8",
+    "permalink": "/docs/modules/module2/teamB/week8"
+  }
+}

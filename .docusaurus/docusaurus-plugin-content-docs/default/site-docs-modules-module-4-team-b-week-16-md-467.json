@@ -1,0 +1,27 @@
+{
+  "id": "modules/module4/teamB/week16",
+  "title": "Week 16 — Teamb",
+  "description": "No document uploaded yet.",
+  "source": "@site/docs/modules/module4/teamB/week16.md",
+  "sourceDirName": "modules/module4/teamB",
+  "slug": "/modules/module4/teamB/week16",
+  "permalink": "/docs/modules/module4/teamB/week16",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week16",
+    "title": "Week 16 — Teamb",
+    "sidebar_label": "Week 16"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week 15",
+    "permalink": "/docs/modules/module4/teamB/week15"
+  },
+  "next": {
+    "title": "Week13",
+    "permalink": "/docs/modules/module4/teamC/week13"
+  }
+}

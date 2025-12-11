@@ -1,0 +1,23 @@
+{
+  "id": "modules/module1/Ingestion/week1",
+  "title": "Week 01 — Teama",
+  "description": "1\\. Overview",
+  "source": "@site/docs/modules/module1/Ingestion/week1.md",
+  "sourceDirName": "modules/module1/Ingestion",
+  "slug": "/modules/module1/Ingestion/week1",
+  "permalink": "/docs/modules/module1/Ingestion/week1",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week1",
+    "title": "Week 01 — Teama",
+    "sidebar_label": "Week 01"
+  },
+  "sidebar": "docsSidebar",
+  "next": {
+    "title": "Week 02",
+    "permalink": "/docs/modules/module1/Ingestion/week2"
+  }
+}

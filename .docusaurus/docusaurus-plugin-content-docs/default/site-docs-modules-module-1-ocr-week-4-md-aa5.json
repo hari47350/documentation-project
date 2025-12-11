@@ -1,0 +1,27 @@
+{
+  "id": "modules/module1/OCR/week4",
+  "title": "Week4 — Teamc",
+  "description": "No document uploaded yet. Previous upload was deleted.",
+  "source": "@site/docs/modules/module1/OCR/week4.md",
+  "sourceDirName": "modules/module1/OCR",
+  "slug": "/modules/module1/OCR/week4",
+  "permalink": "/docs/modules/module1/OCR/week4",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week4",
+    "title": "Week4 — Teamc",
+    "sidebar_label": "Week4"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week3",
+    "permalink": "/docs/modules/module1/OCR/week3"
+  },
+  "next": {
+    "title": "Week1",
+    "permalink": "/docs/modules/module1/Storage/week1"
+  }
+}

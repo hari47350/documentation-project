@@ -1,0 +1,73 @@
+---
+id: week3
+title: Week 03 — Teamb
+sidebar_label: Week 03
+---
+
+&amp;lt;a id="mongodb-backup-documentation"&amp;gt;&amp;lt;/a&amp;gt;# MongoDB Backup Documentation
+
+```text title="week3.md snippet 1"
+__Project:__ smartidh3  
+__Task:__ Hardened MongoDB backup setup  
+__Date:__ 2025\-10\-24
+```
+
+&amp;lt;a id="objective"&amp;gt;&amp;lt;/a&amp;gt;## Objective
+
+- Ensure a reliable backup strategy for MongoDB collections: parsed\_segments, extracted\_entities, raw\_documents, users\.
+- Make backups reproducible from VS Code or PowerShell, even when the Python virtual environment is active\.
+
+&amp;lt;a id="approach"&amp;gt;&amp;lt;/a&amp;gt;## Approach
+
+1. __Install MongoDB Database Tools__
+	- Installed the official [MongoDB Database Tools](https://www.mongodb.com/try/download/database-tools) on Windows\.
+	- Verified mongodump version:
+
+- mongodump version: 100\.13\.0
+
+1. __Create PowerShell Backup Script__
+	- File: scripts/backup\_mongo\.ps1
+	- Features:
+		- Generates timestamped backup folders\.
+		- Dumps all collections of mydb to \.bson files\.
+		- Uses __full path to mongodump\.exe__ to avoid PATH issues in virtual environments\.
+		- Creates backup folder if it does not exist\.
+2. __Run Backup__
+	- Activated virtual environment:
+	- &amp;amp; C:/Users/admin/smartidh3/\.venv/Scripts/Activate\.ps1
+	- Ran backup script:
+	- \.\\scripts\\backup\_mongo\.ps1
+	- Verified all collections dumped successfully:
+	- parsed\_segments: 25403 documents  
+```text title="week3.md snippet 2"
+extracted\_entities: 3 documents  
+raw\_documents: 1 document  
+users: 1 document
+```
+3. __Results__
+	- Backup folder created: C:\\backups\\mongo\_YYYYMMDD\_HHMMSS
+	- All target collections saved as \.bson files\.
+	- Backup works from VS Code terminal, standard PowerShell, or any PowerShell with virtual environment active\.
+
+&amp;lt;a id="advantages-of-this-approach"&amp;gt;&amp;lt;/a&amp;gt;## Advantages of This Approach
+
+- Fully automated and repeatable\.
+- Independent of virtual environment PATH issues\.
+- Timestamped folders provide versioned backups\.
+- Compatible with Windows and VS Code\.
+
+&amp;lt;a id="next-steps-recommendations"&amp;gt;&amp;lt;/a&amp;gt;## Next Steps / Recommendations
+
+- Set up __Windows Task Scheduler__ for automatic daily backups\.
+- Implement a __retention policy__ \(e\.g\., delete backups older than 30 days\)\.
+- Periodically test __restore process__ with mongorestore\.
+
+&amp;lt;a id="usage"&amp;gt;&amp;lt;/a&amp;gt;## Usage
+
+\# Run backup from project root  
+\.\\scripts\\backup\_mongo\.ps1  
+  
+\# Example output  
+```text title="week3.md snippet 3"
+Backup completed successfully at: C:\\backups\\mongo\_20251024\_172252
+```

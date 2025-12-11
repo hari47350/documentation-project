@@ -1,0 +1,112 @@
+---
+id: week11
+title: Week 11 — Teama
+sidebar_label: Week 11
+---
+
+```python title="teama week11 (snippet 1)"
+<a id="smartidh3-integration-test-runbook"></a># SmartIDH3 Integration Test Runbook
+
+```
+__Purpose:__ Test end\-to\-end integration: ingest documents into MongoDB → Chroma → backup binary to AWS S3 → create pointer in MongoDB → verify backup/restore\.
+
+```python title="teama week11 (snippet 2)"
+<a id="prerequisites"></a>## __Prerequisites__
+
+```
+1. __Python Environment__
+```python title="teama week11 (snippet 3)"
+	- Python 3\.10\+ installed
+	- Virtual environment activated:
+	- & C:/Users/admin/smartidh3/\.venv/Scripts/Activate\.ps1
+```
+2. __Dependencies__
+
+- pip install pymongo chromadb boto3
+
+1. __MongoDB__
+```python title="teama week11 (snippet 4)"
+	- Running on localhost:27017
+	- Database: test\_integration
+	- Collection: test\_collection
+```
+2. __Chroma__
+```python title="teama week11 (snippet 5)"
+	- Chroma client installed
+```
+3. __AWS S3__
+```python title="teama week11 (snippet 6)"
+	- AWS account with access key and secret key
+	- Environment variables set \(replace with your keys\):
+	- \[Environment\]::SetEnvironmentVariable\("AWS\_ACCESS\_KEY\_ID", "<your\_access\_key>", "User"\)  
+\[Environment\]::SetEnvironmentVariable\("AWS\_SECRET\_ACCESS\_KEY", "<your\_secret\_key>", "User"\)  
+\[Environment\]::SetEnvironmentVariable\("AWS\_DEFAULT\_REGION", "us\-east\-1", "User"\)
+
+<a id="steps-to-run"></a>## __Steps to Run__
+
+```
+1. Navigate to the integration test directory:
+
+- cd C:\\Users\\admin\\smartidh3\\integration\_test\_setup
+
+1. Run the smoke test:
+
+- python smoke\_test\.py
+
+```python title="teama week11 (snippet 7)"
+<a id="expected-output"></a>## __Expected Output__
+
+```
+Inserted new document into MongoDB / Document already exists in MongoDB  
+MongoDB test passed: \[\.\.\.\]  
+```python title="teama week11 (snippet 8)"
+Chroma test passed: \{\.\.\.\}  
+```
+Created S3 bucket: test\-backup\-xxxxxx  
+✅ Uploaded 'test\_binary\.pdf' to S3 bucket 'test\-backup\-xxxxxx'  
+Inserted pointer document into MongoDB  
+Backup & restore verified ✅  
+```python title="teama week11 (snippet 9)"
+Cleanup completed ✅  \(if cleanup enabled\)  
+```
+Integration test completed successfully ✅
+
+```python title="teama week11 (snippet 10)"
+<a id="verification"></a>## __Verification__
+
+```
+1. __MongoDB__
+```python title="teama week11 (snippet 11)"
+	- Original document \(id=1\)  
+
+	- Pointer document \(id=binary\_1\) with S3 URI
+```
+2. __Chroma__
+```python title="teama week11 (snippet 12)"
+	- Collection test\_collection contains document Test Document 1
+```
+3. __AWS S3__
+```python title="teama week11 (snippet 13)"
+	- Navigate to S3 console → bucket test\-backup\-xxxxxx
+	- Ensure test\_binary\.pdf exists
+	- Optional: download and compare with local file
+
+<a id="cleanup-reset"></a>## __Cleanup / Reset__
+
+- Optional, already in script \(comment out if you want to retain data\):
+	- Delete S3 object & bucket  
+
+	- Remove pointer from MongoDB  
+
+	- Reset Chroma collection
+
+<a id="notes"></a>## __Notes__
+
+```
+- Script is idempotent: can safely run multiple times  
+
+- Each run creates a __unique S3 bucket__ to prevent conflicts  
+
+- Environment variables should __not__ be committed to source control  
+
+- Designed for __dev/test stack__ verification

@@ -1,0 +1,18 @@
+{
+  "id": "test-snippet",
+  "title": "Test Snippet",
+  "description": "Here is raw code pasted from an uploaded doc:",
+  "source": "@site/docs/test-snippet.md",
+  "sourceDirName": ".",
+  "slug": "/test-snippet",
+  "permalink": "/docs/test-snippet",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "test-snippet",
+    "title": "Test Snippet",
+    "sidebar_label": "Test Snippet"
+  }
+}

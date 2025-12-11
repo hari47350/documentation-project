@@ -1,0 +1,290 @@
+{
+  "/__docusaurus/debug-5ff": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/config-5ba": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/content-a2b": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    },
+    "__props": "__props---docusaurus-debug-content-3-c-0-be2"
+  },
+  "/__docusaurus/debug/globalData-c3c": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/metadata-156": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/registry-88c": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/routes-000": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/search-822": {
+    "__comp": "__comp---theme-search-page-1-a-4-d6f",
+    "__context": {
+      "plugin": "plugin---search-138-688"
+    }
+  },
+  "/upload-e28": {
+    "__comp": "__comp---site-src-pages-upload-jsx-557-d5e",
+    "__context": {
+      "plugin": "plugin---uploada-74-d3e"
+    },
+    "config": "config---upload-5-e-9-caa"
+  },
+  "/docs-c13": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---docsaba-d7c"
+    }
+  },
+  "/docs-593": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---docs-005-788"
+  },
+  "/docs-5fe": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/docs/-0ee": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-c-37-4d0"
+  },
+  "/docs/modules/module1/Ingestion/week1-5df": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-1-ingestion-week-1-ffb-07b"
+  },
+  "/docs/modules/module1/Ingestion/week2-646": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-1-ingestion-week-27-a-3-ded"
+  },
+  "/docs/modules/module1/Ingestion/week3-7ae": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-1-ingestion-week-3-fc-3-b2c"
+  },
+  "/docs/modules/module1/Ingestion/week4-ffe": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-1-ingestion-week-4-efa-ca6"
+  },
+  "/docs/modules/module1/OCR/week1-b28": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-1-ocr-week-19-a-4-d19"
+  },
+  "/docs/modules/module1/OCR/week2-f07": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-1-ocr-week-2-f-32-cad"
+  },
+  "/docs/modules/module1/OCR/week3-b48": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-1-ocr-week-351-b-553"
+  },
+  "/docs/modules/module1/OCR/week4-a29": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-1-ocr-week-4-aa-5-e95"
+  },
+  "/docs/modules/module1/Storage/week1-188": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-1-storage-week-1-c-0-d-0c8"
+  },
+  "/docs/modules/module1/Storage/week2-b97": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-1-storage-week-2-a-51-bba"
+  },
+  "/docs/modules/module1/Storage/week3-69b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-1-storage-week-3882-25c"
+  },
+  "/docs/modules/module1/Storage/week4-360": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-1-storage-week-4584-c7d"
+  },
+  "/docs/modules/module2/teamA/week5-efd": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-2-team-a-week-5-bbb-372"
+  },
+  "/docs/modules/module2/teamA/week6-579": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-2-team-a-week-6-bc-8-989"
+  },
+  "/docs/modules/module2/teamA/week7-8af": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-2-team-a-week-7-dc-2-d0e"
+  },
+  "/docs/modules/module2/teamA/week8-f81": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-2-team-a-week-8-a-94-c6e"
+  },
+  "/docs/modules/module2/teamB/week5-2d4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-2-team-b-week-521-f-ca3"
+  },
+  "/docs/modules/module2/teamB/week6-87d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-2-team-b-week-6033-a63"
+  },
+  "/docs/modules/module2/teamB/week7-b5b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-2-team-b-week-7305-4cf"
+  },
+  "/docs/modules/module2/teamB/week8-a6b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-2-team-b-week-84-f-7-a53"
+  },
+  "/docs/modules/module2/teamC/week5-463": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-2-team-c-week-57-d-7-389"
+  },
+  "/docs/modules/module2/teamC/week6-a74": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-2-team-c-week-671-a-bdb"
+  },
+  "/docs/modules/module2/teamC/week7-763": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-2-team-c-week-7-a-80-06b"
+  },
+  "/docs/modules/module2/teamC/week8-610": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-2-team-c-week-8-fd-9-94f"
+  },
+  "/docs/modules/module3/teamA/week10-d15": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-3-team-a-week-107-c-8-da5"
+  },
+  "/docs/modules/module3/teamA/week11-a00": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-3-team-a-week-1110-d-a12"
+  },
+  "/docs/modules/module3/teamA/week12-92c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-3-team-a-week-12-cce-508"
+  },
+  "/docs/modules/module3/teamA/week9-c3e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-3-team-a-week-92-c-3-d81"
+  },
+  "/docs/modules/module3/teamB/week10-a61": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-3-team-b-week-10380-a5f"
+  },
+  "/docs/modules/module3/teamB/week11-5d7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-3-team-b-week-11-cc-9-d57"
+  },
+  "/docs/modules/module3/teamB/week12-3ec": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-3-team-b-week-1276-e-81e"
+  },
+  "/docs/modules/module3/teamB/week9-e94": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-3-team-b-week-95-a-1-f16"
+  },
+  "/docs/modules/module3/teamC/week10-641": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-3-team-c-week-10785-d0b"
+  },
+  "/docs/modules/module3/teamC/week11-668": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-3-team-c-week-1110-e-063"
+  },
+  "/docs/modules/module3/teamC/week12-c2f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-3-team-c-week-12409-58f"
+  },
+  "/docs/modules/module3/teamC/week9-3b8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-3-team-c-week-9927-090"
+  },
+  "/docs/modules/module4/teamA/week13-f03": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-4-team-a-week-1391-a-3a5"
+  },
+  "/docs/modules/module4/teamA/week14-31b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-4-team-a-week-142-a-1-c05"
+  },
+  "/docs/modules/module4/teamA/week15-e06": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-4-team-a-week-1580-b-64f"
+  },
+  "/docs/modules/module4/teamA/week16-756": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-4-team-a-week-16-a-40-a52"
+  },
+  "/docs/modules/module4/teamB/week13-55f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-4-team-b-week-134-b-0-311"
+  },
+  "/docs/modules/module4/teamB/week14-e7d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-4-team-b-week-1454-b-d01"
+  },
+  "/docs/modules/module4/teamB/week15-dc3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-4-team-b-week-15-dc-2-a67"
+  },
+  "/docs/modules/module4/teamB/week16-4bf": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-4-team-b-week-16467-c66"
+  },
+  "/docs/modules/module4/teamC/week13-696": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-4-team-c-week-137-b-6-47e"
+  },
+  "/docs/modules/module4/teamC/week14-604": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-4-team-c-week-1439-c-f20"
+  },
+  "/docs/modules/module4/teamC/week15-9cf": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-4-team-c-week-15-d-9-e-c0f"
+  },
+  "/docs/modules/module4/teamC/week16-99e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-modules-module-4-team-c-week-16275-094"
+  },
+  "/docs/overview-3eb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-overview-1-db-071"
+  },
+  "/docs/test-snippet-f40": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-test-snippet-558-249"
+  },
+  "/docs/uploads/-2fe": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-uploads-a-8-c-ef8"
+  },
+  "/docs/uploads/upload-guide-25d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-uploads-upload-guide-2-e-0-583"
+  },
+  "/-2e1": {
+    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
+    "__context": {
+      "plugin": "plugin---uploada-74-d3e"
+    },
+    "config": "config---upload-5-e-9-caa"
+  }
+}

@@ -1,0 +1,119 @@
+---
+id: week2
+title: Week 02 — Teama
+sidebar_label: Week 02
+---
+
+# <a id="Xfbbf4568db0bd764ffd07ece5b1472bafc03801"></a> Presentation Document: Exception Handling in Code
+
+## <a id="meeting-objective"></a>Meeting Objective
+
+Explain best practices for exception handling to the development team with examples, focusing on predictable error management, logging, and providing clear feedback to users\.
+
+## <a id="agenda"></a>Agenda
+
+1. Introduction to Exception Handling
+2. Importance of Exception Handling
+3. Key Principles of Exception Handling
+	- Using try\-except blocks
+	- Specific exception types
+	- Raising exceptions
+	- Logging errors
+	- Failing gracefully
+4. Examples and Best Practices
+5. Q&A
+
+## <a id="introduction-to-exception-handling"></a>1\. Introduction to Exception Handling
+
+- Exception handling is the process of anticipating and managing runtime errors\.
+- It ensures the program can continue or fail gracefully without crashing\.
+
+## <a id="importance-of-exception-handling"></a>2\. Importance of Exception Handling
+
+- Prevents unexpected program crashes\.
+- Provides meaningful error messages for troubleshooting\.
+- Helps maintain software reliability and robustness\.
+
+## <a id="key-principles-of-exception-handling"></a>3\. Key Principles of Exception Handling
+
+### <a id="using-try-except-blocks"></a>3\.1 Using try\-except Blocks
+
+- Wrap code that might fail in a try block\.
+- Handle expected errors in the except block\.
+
+__Example:__
+
+try:
+
+      \# 1\. The Risky Action   
+  
+    result = 10 / divisor  
+except ZeroDivisionError:  
+    print\("Error: Cannot divide by zero\."\)
+
+### <a id="specific-exception-types"></a>3\.2 Specific Exception Types
+
+- Catch specific exceptions instead of using a generic except\.
+- it allows you to handle different errors in different ways and prevents you from accidentally hiding unexpected bugs\.
+- Avoid catching too broadly to prevent masking other errors\.
+
+__Example:__
+
+try:  
+    user\_input = int\(input\("Enter a number: "\)\)  
+except ValueError:  
+    print\("Invalid input: Please enter a valid integer\."\)
+
+### <a id="raising-exceptions"></a>3\.3 Raising Exceptions
+
+- Raise exceptions when invalid conditions occur\.
+- Provides clarity and control over error conditions\.
+
+__Example:__
+
+def calculate\_area\(radius\):  
+    if radius < 0:  
+        raise ValueError\("Radius cannot be negative"\)  
+    return 3\.14 \* radius \*\* 2
+
+### <a id="logging-errors"></a>3\.4 Logging Errors
+
+- Use logging to record error details for troubleshooting\.
+- Avoid printing sensitive data directly to users\.
+
+__Example:__
+
+\import logging  
+  
+logging\.basicConfig\(level=logging\.ERROR\)  
+try:  
+    process\_data\(data\)  
+except KeyError as e:  
+    logging\.error\(f"Missing key in data: \{e\}"\)  
+    print\("Error processing data\. Contact support\."\)
+
+### <a id="failing-gracefully"></a>3\.5 Failing Gracefully
+
+- Ensure the program can recover or exit safely\.
+- Provide user\-friendly messages and cleanup resources if needed\.
+
+__Example:__
+
+try:
+
+          \# 1\. The Risky Action   
+    file = open\('data\.txt'\)  
+except FileNotFoundError:
+
+         \# 2\. The Graceful Recovery  
+    print\("File not found\. Please check the file path\."\)  
+else:
+
+           \# 3\. The "Success" Path and Cleanup  
+    data = file\.read\(\)  
+    file\.close\(\) \# <\-\- Important cleanup step
+
+## <a id="qa"></a>
+
+<a id="notes-for-presenter"></a>
+

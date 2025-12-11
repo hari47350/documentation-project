@@ -1,0 +1,27 @@
+{
+  "id": "modules/module1/teamA/week4",
+  "title": "Week 04 — Teama",
+  "description": "Purpose ingest documents into MongoDB → Chroma → backup binary to AWS S3 → create pointer in MongoDB → verify backup/restore\\.",
+  "source": "@site/docs/modules/module1/teamA/week4.md",
+  "sourceDirName": "modules/module1/teamA",
+  "slug": "/modules/module1/teamA/week4",
+  "permalink": "/docs/modules/module1/teamA/week4",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week4",
+    "title": "Week 04 — Teama",
+    "sidebar_label": "Week 04"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week 03",
+    "permalink": "/docs/modules/module1/teamA/week3"
+  },
+  "next": {
+    "title": "Week1",
+    "permalink": "/docs/modules/module1/teamB/week1"
+  }
+}

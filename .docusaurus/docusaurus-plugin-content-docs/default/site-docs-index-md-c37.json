@@ -1,0 +1,18 @@
+{
+  "id": "index",
+  "title": "Project Docs",
+  "description": "Welcome! Open Modules in the left sidebar to browse teams & weeks.",
+  "source": "@site/docs/index.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/docs/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "index",
+    "title": "Project Docs",
+    "slug": "/"
+  }
+}

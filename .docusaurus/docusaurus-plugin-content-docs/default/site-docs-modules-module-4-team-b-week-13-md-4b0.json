@@ -1,0 +1,27 @@
+{
+  "id": "modules/module4/teamB/week13",
+  "title": "Week 13 — Teamb",
+  "description": "No document uploaded yet.",
+  "source": "@site/docs/modules/module4/teamB/week13.md",
+  "sourceDirName": "modules/module4/teamB",
+  "slug": "/modules/module4/teamB/week13",
+  "permalink": "/docs/modules/module4/teamB/week13",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week13",
+    "title": "Week 13 — Teamb",
+    "sidebar_label": "Week 13"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week16",
+    "permalink": "/docs/modules/module4/teamA/week16"
+  },
+  "next": {
+    "title": "Week 14",
+    "permalink": "/docs/modules/module4/teamB/week14"
+  }
+}

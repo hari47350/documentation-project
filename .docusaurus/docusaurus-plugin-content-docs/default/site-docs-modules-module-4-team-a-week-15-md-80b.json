@@ -1,0 +1,27 @@
+{
+  "id": "modules/module4/teamA/week15",
+  "title": "Week15 — Teama",
+  "description": "No document uploaded yet. Previous upload was deleted.",
+  "source": "@site/docs/modules/module4/teamA/week15.md",
+  "sourceDirName": "modules/module4/teamA",
+  "slug": "/modules/module4/teamA/week15",
+  "permalink": "/docs/modules/module4/teamA/week15",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week15",
+    "title": "Week15 — Teama",
+    "sidebar_label": "Week15"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week 14",
+    "permalink": "/docs/modules/module4/teamA/week14"
+  },
+  "next": {
+    "title": "Week16",
+    "permalink": "/docs/modules/module4/teamA/week16"
+  }
+}

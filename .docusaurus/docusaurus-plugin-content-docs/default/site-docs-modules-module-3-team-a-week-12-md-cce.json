@@ -1,0 +1,27 @@
+{
+  "id": "modules/module3/teamA/week12",
+  "title": "Week12 — Teama",
+  "description": "No document uploaded yet. Previous upload was deleted.",
+  "source": "@site/docs/modules/module3/teamA/week12.md",
+  "sourceDirName": "modules/module3/teamA",
+  "slug": "/modules/module3/teamA/week12",
+  "permalink": "/docs/modules/module3/teamA/week12",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week12",
+    "title": "Week12 — Teama",
+    "sidebar_label": "Week12"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week11",
+    "permalink": "/docs/modules/module3/teamA/week11"
+  },
+  "next": {
+    "title": "Week9",
+    "permalink": "/docs/modules/module3/teamA/week9"
+  }
+}

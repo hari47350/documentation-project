@@ -1,0 +1,27 @@
+{
+  "id": "modules/module1/teamA/week2",
+  "title": "Week 02 — Teama",
+  "description": "Meeting Objective",
+  "source": "@site/docs/modules/module1/teamA/week2.md",
+  "sourceDirName": "modules/module1/teamA",
+  "slug": "/modules/module1/teamA/week2",
+  "permalink": "/docs/modules/module1/teamA/week2",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week2",
+    "title": "Week 02 — Teama",
+    "sidebar_label": "Week 02"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week 01",
+    "permalink": "/docs/modules/module1/teamA/week1"
+  },
+  "next": {
+    "title": "Week 03",
+    "permalink": "/docs/modules/module1/teamA/week3"
+  }
+}

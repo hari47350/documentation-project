@@ -1,0 +1,311 @@
+---
+id: week4
+title: Week 04 — Team A
+sidebar_label: Week 04
+---
+
+# Week 5 — SmartIDH3: MongoDB Schema Hardening, Migrations, Backups & Benchmarking
+
+## 1. Overview
+
+```python
+This document records Week 5 work for the SmartIDH3 project. It covers:
+```
+
+- Schema hardening for the `parsed_segments` collection
+- Migrations and index tuning
+- TTLs and backup scripts
+- Stress & benchmark tests
+- Troubleshooting notes and how to run all scripts
+
+---
+
+## 2. Environment & Prerequisites
+
+```python
+Required software:
+```
+
+- Python 3.10+
+- Virtual environment (`.venv`)
+- MongoDB (local or remote)
+- MongoDB Database Tools (`mongodump`)
+- Python package: `pymongo`
+
+```python
+Example setup:
+```
+
+```bash
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install pymongo
+```
+
+---
+
+## 3. Project files (exact names — do not change)
+
+```text
+storage/mongo_client.py
+storage/migrations/v2_harden_parsed_segments.py
+storage/create_indexes.py
+scripts/backup_mongosh.ps1
+tests/stress_test_parsed_segments.py
+tests/stress_benchmark.py
+tests/benchmark_queries.py
+tests/benchmark_post_migration.py
+tests/full_workflow.py
+storage/mongo_schema.md
+```
+
+---
+
+## 4. storage/mongo_client.py
+
+```python
+from pymongo import MongoClient
+from datetime import datetime, timezone
+import os
+
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/")
+client = MongoClient(MONGO_URI)
+
+def get_db():
+    return client["mydb"]
+
+db = get_db()
+
+# Indexes
+db.raw_documents.create_index([("tenant_id", 1), ("status", 1), ("uploaded_at", -1)])
+db.raw_documents.create_index("sha256", unique=True)
+
+db.parsed_segments.create_index([("tenant_id", 1), ("doc_id", 1), ("page_number", 1)])
+db.parsed_segments.create_index([("text", "text")])
+db.parsed_segments.create_index("entities")
+db.parsed_segments.create_index([("created_at", 1)], expireAfterSeconds=2592000)
+
+db.extracted_entities.create_index([("fields.aadhaar_number.value", 1)])
+db.extracted_entities.create_index([("fields.pan_number.value", 1)])
+db.extracted_entities.create_index("document_type")
+db.extracted_entities.create_index("tenant_id")
+
+db.users.create_index([("tenant_id", 1), ("email", 1)], unique=True)
+```
+
+---
+
+## 5. Migrations
+
+```python
+Run migration using:
+```
+
+```bash
+python -m storage.migrations.v2_harden_parsed_segments
+```
+
+```python
+Script:
+```
+
+```python
+from storage.mongo_client import get_db
+
+def apply_hardened_indexes():
+    db = get_db()
+    print("Applying hardened indexes...")
+    db.parsed_segments.create_index(
+        [("tenant_id", 1), ("doc_id", 1), ("page_number", 1)],
+        name="tenant_id_1_doc_id_1"
+    )
+    db.parsed_segments.create_index([("text", "text")], name="text_text")
+    db.parsed_segments.create_index([("entities", 1)], name="entities_1")
+    print("Hardening complete.")
+
+if __name__ == "__main__":
+    apply_hardened_indexes()
+```
+
+---
+
+## 6. Backup Script (PowerShell)
+
+File: `scripts/backup_mongosh.ps1`
+
+```powershell
+# MongoDB Backup Script (PowerShell)
+
+$mongoUri      = "mongodb://localhost:27017/mydb"
+$mongoDumpPath = "C:\Users\admin\Downloads\mongodb-database-tools-windows-x86_64-100.13.0\mongodb-database-tools-windows-x86_64-100.13.0\bin\mongodump.exe"
+$backupRoot    = "C:\backups"
+$daysToKeep    = 90
+
+$timestamp  = Get-Date -Format "yyyyMMdd_HHmmss"
+$backupPath = Join-Path $backupRoot "mongo_$timestamp"
+New-Item -ItemType Directory -Path $backupPath -Force | Out-Null
+
+if (Test-Path $mongoDumpPath) {
+    & $mongoDumpPath --uri="$mongoUri" --out="$backupPath"
+    Write-Host "Backup completed successfully at: $backupPath"
+} else {
+    Write-Host "ERROR: mongodump.exe not found"
+    exit 1
+}
+
+# Cleanup old backups
+$cutoff = (Get-Date).AddDays(-$daysToKeep)
+Get-ChildItem -Path $backupRoot -Directory |
+    Where-Object { $_.CreationTime -lt $cutoff } |
+    ForEach-Object { Remove-Item $_.FullName -Recurse -Force }
+```
+
+```python
+Manual Run:
+```
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\scripts\backup_mongosh.ps1
+```
+
+---
+
+## 7. Tests & Benchmarking Scripts
+
+```python
+Run using module syntax:
+```
+
+```bash
+python -m tests.<script_name>
+```
+
+### 7.1 Stress Insert
+
+```python
+from datetime import datetime, timezone
+from storage.mongo_client import get_db
+
+db = get_db()
+DOC = db.raw_documents.find_one()
+if not DOC:
+    raise Exception("Insert raw document first")
+DOC_ID = str(DOC["_id"])
+
+NUM_SEGMENTS = 10000
+
+for i in range(NUM_SEGMENTS):
+    db.parsed_segments.insert_one({
+        "tenant_id": f"t{i % 5}",
+        "doc_id": DOC_ID,
+        "page_number": (i % 10) + 1,
+        "text": f"Sample {i}",
+        "bbox": {"x":0,"y":0,"w":100,"h":50},
+        "confidence": 0.95,
+        "ocr_engine": "tesseract",
+        "entities": ["sample"],
+        "created_at": datetime.now(timezone.utc),
+    })
+```
+
+### 7.2 Stress Benchmark
+
+```python
+import time
+from datetime import datetime, timezone
+from storage.mongo_client import get_db
+
+db = get_db()
+DOC = db.raw_documents.find_one()
+DOC_ID = str(DOC["_id"])
+TENANT = "t0"
+NUM_SEGMENTS = 10000
+
+existing = db.parsed_segments.count_documents({"tenant_id": TENANT, "doc_id": DOC_ID})
+if existing < NUM_SEGMENTS:
+    for i in range(NUM_SEGMENTS - existing):
+        db.parsed_segments.insert_one({
+            "tenant_id": TENANT,
+            "doc_id": DOC_ID,
+            "page_number": (i % 10) + 1,
+            "text": f"Sample {i}",
+            "bbox": {"x":0,"y":0,"w":100,"h":50},
+            "confidence": 0.95,
+            "ocr_engine": "tesseract",
+            "entities": ["sample"],
+            "created_at": datetime.now(timezone.utc),
+        })
+
+times = []
+for _ in range(10):
+    s = time.time()
+    list(db.parsed_segments.find({"tenant_id": TENANT, "doc_id": DOC_ID}))
+    times.append((time.time() - s) * 1000)
+print("Average:", sum(times) / len(times))
+```
+
+### 7.3 Query Benchmark
+
+```python
+import time
+from storage.mongo_client import get_db
+
+db = get_db()
+DOC_ID = str(db.raw_documents.find_one()["_id"])
+
+query = {"tenant_id": "t0", "doc_id": DOC_ID}
+times = []
+for _ in range(10):
+    s = time.time()
+    list(db.parsed_segments.find(query))
+    times.append((time.time() - s) * 1000)
+print("Avg:", sum(times)/len(times))
+
+plan = db.parsed_segments.find(query).explain()
+print(plan["executionStats"]["executionTimeMillis"])
+```
+
+---
+
+## 8. Troubleshooting
+
+- Run using module syntax `python -m tests.script_name`
+- Convert ObjectId to string → `str(DOC["_id"])`
+- Ensure correct full path for `mongodump.exe`
+- TTL index auto-removes old segments
+
+---
+
+## 9. Benchmark Results
+
+- Query time target: **<200ms**
+- Observed average: **85–140ms**
+- Correct index always used: `tenant_id_1_doc_id_1`
+
+---
+
+## 10. How to Run
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+python -m storage.migrations.v2_harden_parsed_segments
+python -m tests.stress_test_parsed_segments
+python -m tests.stress_benchmark
+python -m tests.benchmark_queries
+python -m tests.benchmark_post_migration
+.\scripts\backup_mongosh.ps1
+```
+
+---
+
+## 11. Next Improvements
+
+- Use `insert_many()` for speed
+- Track P95/P99 latency
+- Automate backup with Task Scheduler
+- Consider sharding if dataset grows
+
+---
+
+Generated for SmartIDH3 — Week 5.

@@ -1,0 +1,23 @@
+{
+  "id": "modules/module4/teamC/week16",
+  "title": "Week 16 — Teamc",
+  "description": "No document uploaded yet.",
+  "source": "@site/docs/modules/module4/teamC/week16.md",
+  "sourceDirName": "modules/module4/teamC",
+  "slug": "/modules/module4/teamC/week16",
+  "permalink": "/docs/modules/module4/teamC/week16",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week16",
+    "title": "Week 16 — Teamc",
+    "sidebar_label": "Week 16"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week 15",
+    "permalink": "/docs/modules/module4/teamC/week15"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "modules/module1/teamB/week1",
+  "title": "Week1 — Teamb",
+  "description": "No document uploaded yet. Previous upload was deleted.",
+  "source": "@site/docs/modules/module1/teamB/week1.md",
+  "sourceDirName": "modules/module1/teamB",
+  "slug": "/modules/module1/teamB/week1",
+  "permalink": "/docs/modules/module1/teamB/week1",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week1",
+    "title": "Week1 — Teamb",
+    "sidebar_label": "Week1"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week 04",
+    "permalink": "/docs/modules/module1/Ingestion/week4"
+  },
+  "next": {
+    "title": "Week2",
+    "permalink": "/docs/modules/module1/teamB/week2"
+  }
+}

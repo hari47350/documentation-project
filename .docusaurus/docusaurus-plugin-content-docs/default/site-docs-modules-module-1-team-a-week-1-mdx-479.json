@@ -1,0 +1,19 @@
+{
+  "id": "modules/module1/teamA/week1",
+  "title": "Week 5 - SmartIDH3: MongoDB Schema Hardening, Migrations, Backups & Benchmarking",
+  "description": "1. Overview",
+  "source": "@site/docs/modules/module1/teamA/week1.mdx",
+  "sourceDirName": "modules/module1/teamA",
+  "slug": "/modules/module1/teamA/week1",
+  "permalink": "/docs/modules/module1/teamA/week1",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "next": {
+    "title": "Week 02",
+    "permalink": "/docs/modules/module1/teamA/week2"
+  }
+}

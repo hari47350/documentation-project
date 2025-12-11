@@ -1,0 +1,27 @@
+{
+  "id": "modules/module1/teamC/week2",
+  "title": "Week2 — Teamc",
+  "description": "No document uploaded yet. Previous upload was deleted.",
+  "source": "@site/docs/modules/module1/teamC/week2.md",
+  "sourceDirName": "modules/module1/teamC",
+  "slug": "/modules/module1/teamC/week2",
+  "permalink": "/docs/modules/module1/teamC/week2",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week2",
+    "title": "Week2 — Teamc",
+    "sidebar_label": "Week2"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week1",
+    "permalink": "/docs/modules/module1/teamC/week1"
+  },
+  "next": {
+    "title": "Week3",
+    "permalink": "/docs/modules/module1/teamC/week3"
+  }
+}

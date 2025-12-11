@@ -1,0 +1,27 @@
+{
+  "id": "modules/module1/Storage/week1",
+  "title": "Week1 — Teamb",
+  "description": "No document uploaded yet. Previous upload was deleted.",
+  "source": "@site/docs/modules/module1/Storage/week1.md",
+  "sourceDirName": "modules/module1/Storage",
+  "slug": "/modules/module1/Storage/week1",
+  "permalink": "/docs/modules/module1/Storage/week1",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week1",
+    "title": "Week1 — Teamb",
+    "sidebar_label": "Week1"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week4",
+    "permalink": "/docs/modules/module1/OCR/week4"
+  },
+  "next": {
+    "title": "Week2",
+    "permalink": "/docs/modules/module1/Storage/week2"
+  }
+}

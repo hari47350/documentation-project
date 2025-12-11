@@ -1,0 +1,357 @@
+---
+id: week1
+title: Week 01 — Teama
+sidebar_label: Week 01
+---
+
+# Week 5 \- SmartIDH3: MongoDB Schema Hardening, Migrations, Backups & Benchmarking
+
+## 1\. Overview
+
+This document contains a comprehensive record of Week 5 work for the SmartIDH3 project\. It covers schema hardening for the parsed\_segments collection, migrations, index tuning, TTLs, backup scripts, stress & benchmark tests, troubleshooting notes \(issues encountered and fixes\), and instructions to run every script with exact file names as present in the repository\.
+
+## 2\. Environment & Prerequisites
+
+Required software and environment:
+
+\- Python \(3\.10\+ recommended\)
+
+\- Virtual environment \(recommended \.venv\)
+
+\- MongoDB \(local or remote\) with access and appropriate user/URI
+
+\- MongoDB Database Tools \(mongodump\) for backups
+
+\- Python dependencies: pymongo
+
+  
+Setup commands \(example\):
+
+```text title="2\. Environment & Prerequisites"
+python \-m venv \.venv  
+```
+\.venv\\Scripts\\Activate\.ps1  \# on Windows PowerShell  
+```text title="2\. Environment & Prerequisites"
+pip install pymongo
+
+## 3\. Project files \(exact names \- do not change\)
+
+```
+Below are the important files in the repository\. These names are used exactly in the code and scripts; do not rename them\.
+
+\- storage/mongo\_client\.py
+
+\- storage/migrations/v2\_harden\_parsed\_segments\.py
+
+\- storage/create\_indexes\.py
+
+\- scripts/backup\_mongosh\.ps1
+
+\- tests/stress\_test\_parsed\_segments\.py
+
+\- tests/stress\_benchmark\.py
+
+\- tests/benchmark\_queries\.py
+
+\- tests/benchmark\_post\_migration\.py
+
+\- tests/full\_workflow\.py
+
+\- storage/mongo\_schema\.md
+
+## 4\. storage/mongo\_client\.py \(DB connection & index ensures\)
+
+This file provides the MongoDB client and ensures initial indexes and helper get\_db\(\)\. Keep the file at storage/mongo\_client\.py and import it as 'from storage\.mongo\_client import get\_db'\.
+
+Example content \(already present in repo\):
+
+```python title="4\. storage/mongo\_client\.py \"
+from pymongo import MongoClient  
+from datetime import datetime, timezone   
+import os  
+  
+MONGO\_URI = os\.getenv\("MONGO\_URI", "mongodb://localhost:27017/"\)  
+client = MongoClient\(MONGO\_URI\)  
+  
+def get\_db\(\):  
+    return client\["mydb"\]  
+  
+db = get\_db\(\)  
+  
+```
+\# ensure indexes \(examples\)  
+db\.raw\_documents\.create\_index\(\[\("tenant\_id", 1\), \("status", 1\), \("uploaded\_at", \-1\)\]\)  
+db\.raw\_documents\.create\_index\("sha256", unique=True\)  
+  
+db\.parsed\_segments\.create\_index\(\[\("tenant\_id", 1\), \("doc\_id", 1\), \("page\_number", 1\)\]\)  
+db\.parsed\_segments\.create\_index\(\[\("text", "text"\)\]\)  
+db\.parsed\_segments\.create\_index\("entities"\)  
+db\.parsed\_segments\.create\_index\(\[\("created\_at", 1\)\], expireAfterSeconds=2592000\)  
+  
+db\.extracted\_entities\.create\_index\(\[\("fields\.aadhaar\_number\.value", 1\)\]\)  
+db\.extracted\_entities\.create\_index\(\[\("fields\.pan\_number\.value", 1\)\]\)  
+db\.extracted\_entities\.create\_index\("document\_type"\)  
+db\.extracted\_entities\.create\_index\("tenant\_id"\)  
+  
+db\.users\.create\_index\(\[\("tenant\_id", 1\), \("email", 1\)\], unique=True\)  
+
+
+## 5\. Migrations
+
+Migration scripts apply schema validators and hardened indexes\. The repository contains storage/migrations/v2\_harden\_parsed\_segments\.py\. Run migrations from project root using python \-m storage\.migrations\.v2\_harden\_parsed\_segments \(module syntax\)\.
+
+Example migration script \(v2\_harden\_parsed\_segments\.py\):
+
+```python title="5\. Migrations"
+from storage\.mongo\_client import get\_db  
+  
+def apply\_hardened\_indexes\(\):  
+    db = get\_db\(\)  
+    print\("Applying hardened indexes on parsed\_segments\.\.\."\)  
+    db\.parsed\_segments\.create\_index\(\[\("tenant\_id", 1\), \("doc\_id", 1\), \("page\_number", 1\)\], name="tenant\_id\_1\_doc\_id\_1"\)  
+    db\.parsed\_segments\.create\_index\(\[\("text", "text"\)\], name="text\_text"\)  
+    db\.parsed\_segments\.create\_index\(\[\("entities", 1\)\], name="entities\_1"\)  
+    print\("All hardened indexes applied successfully\."\)  
+  
+if \_\_name\_\_ == "\_\_main\_\_":  
+    apply\_hardened\_indexes\(\)  
+
+
+```
+## 6\. Backups \(PowerShell\)
+
+Backup script used: scripts/backup\_mongosh\.ps1 \(file name preserved exactly\)\. This script runs mongodump and cleans old backups\.
+
+Important: $mongoDumpPath must point to the full path of mongodump\.exe \(including the executable\)\. Example path in your environment:
+
+```text title="6\. Backups \"
+$mongoDumpPath = 'C:\\Users\\admin\\Downloads\\mongodb\-database\-tools\-windows\-x86\_64\-100\.13\.0\\mongodb\-database\-tools\-windows\-x86\_64\-100\.13\.0\\bin\\mongodump\.exe'
+
+```
+Full backup script \(keep file name scripts/backup\_mongosh\.ps1\):
+
+  
+\# MongoDB Backup Script \(PowerShell\)  
+```text title="6\. Backups \"
+$mongoUri = "mongodb://localhost:27017/mydb"  
+$mongoDumpPath = 'C:\\Users\\admin\\Downloads\\mongodb\-database\-tools\-windows\-x86\_64\-100\.13\.0\\mongodb\-database\-tools\-windows\-x86\_64\-100\.13\.0\\bin\\mongodump\.exe'  
+$backupRoot = "C:\\backups"  
+$daysToKeep = 90  
+  
+$timestamp = Get\-Date \-Format "yyyyMMdd\_HHmmss"  
+$backupPath = Join\-Path $backupRoot "mongo\_$timestamp"  
+```
+New\-Item \-ItemType Directory \-Path $backupPath \-Force | Out\-Null  
+  
+if \(Test\-Path $mongoDumpPath\) \{  
+```text title="6\. Backups \"
+    & $mongoDumpPath \-\-uri="$mongoUri" \-\-out="$backupPath"  
+    Write\-Host "Backup completed successfully at: $backupPath"  
+```
+\} else \{  
+```text title="6\. Backups \"
+    Write\-Host "ERROR: mongodump\.exe not found at $mongoDumpPath"  
+    exit 1  
+```
+\}  
+  
+\# Cleanup old backups  
+```text title="6\. Backups \"
+$cutoff = \(Get\-Date\)\.AddDays\(\-$daysToKeep\)  
+```
+Get\-ChildItem \-Path $backupRoot \-Directory | Where\-Object \{ $\_\.CreationTime \-lt $cutoff \} | ForEach\-Object \{  
+```text title="6\. Backups \"
+    Remove\-Item $\_\.FullName \-Recurse \-Force  
+```
+\}  
+
+
+How to run manually in PowerShell \(example\):
+
+Set\-ExecutionPolicy \-Scope Process \-ExecutionPolicy Bypass  
+\.\\scripts\\backup\_mongosh\.ps1
+
+Task Scheduler configuration \(Action → Program/script: powershell\.exe, Add arguments: \-ExecutionPolicy Bypass \-File "C:\\Users\\admin\\smartidh3\\scripts\\backup\_mongosh\.ps1", Start in: C:\\Users\\admin\\smartidh3\\scripts\)
+
+## 7\. Tests & Benchmarking scripts \(exact file names\)
+
+The tests folder contains the following scripts\. Use module execution from project root \(python \-m tests\.\)\.
+
+### 7\.1 tests/stress\_test\_parsed\_segments\.py
+
+Purpose: Bulk insert many parsed\_segments for stress testing\. Make sure storage\.mongo\_client\.get\_db exists\.
+
+```python title="7\.1 tests/stress\_test\_parsed\_segments\.py"
+from datetime import datetime, timezone  
+from bson import ObjectId  
+from storage\.mongo\_client import get\_db  
+  
+db = get\_db\(\)  
+DOC = db\.raw\_documents\.find\_one\(\)  
+if not DOC:  
+    raise Exception\("No raw document found\. Insert one first\."\)  
+DOC\_ID = str\(DOC\['\_id'\]\)  
+  
+NUM\_SEGMENTS = 10000  
+for i in range\(NUM\_SEGMENTS\):  
+    db\.parsed\_segments\.insert\_one\(\{  
+        "tenant\_id": f"t\{i % 5\}",  
+        "doc\_id": DOC\_ID,  
+        "page\_number": \(i % 10\) \+ 1,  
+        "text": f"Sample text segment \{i\}",  
+        "bbox": \{"x": 0, "y": 0, "w": 100, "h": 50\},  
+        "confidence": 0\.95,  
+        "ocr\_engine": "tesseract",  
+        "entities": \["sample\_entity"\],  
+        "created\_at": datetime\.now\(timezone\.utc\)  
+    \}\)  
+
+
+```
+### 7\.2 tests/stress\_benchmark\.py
+
+Purpose: Insert missing segments and benchmark query performance across iterations\.
+
+```python title="7\.2 tests/stress\_benchmark\.py"
+import time  
+from datetime import datetime, timezone  
+from storage\.mongo\_client import get\_db  
+  
+db = get\_db\(\)  
+DOC = db\.raw\_documents\.find\_one\(\)  
+DOC\_ID = str\(DOC\['\_id'\]\)  
+TENANT\_ID = "t0"  
+  
+NUM\_SEGMENTS = 10000  
+existing\_count = db\.parsed\_segments\.count\_documents\(\{"tenant\_id": TENANT\_ID, "doc\_id": DOC\_ID\}\)  
+if existing\_count < NUM\_SEGMENTS:  
+    for i in range\(NUM\_SEGMENTS \- existing\_count\):  
+        db\.parsed\_segments\.insert\_one\(\{\.\.\.\}\)  \# see exact insertion fields in repo  
+  
+```
+\# Benchmark loop\.\.\.  
+
+
+### 7\.3 tests/benchmark\_queries\.py
+
+Purpose: Quick benchmark script to measure query time and run explain plan\.
+
+```python title="7\.3 tests/benchmark\_queries\.py"
+import time  
+from datetime import datetime, timezone  
+from storage\.mongo\_client import get\_db  
+  
+db = get\_db\(\)  
+DOC = db\.raw\_documents\.find\_one\(\)  
+DOC\_ID = str\(DOC\['\_id'\]\)  
+TENANT\_ID = "t0"  
+query = \{"tenant\_id": TENANT\_ID, "doc\_id": DOC\_ID\}  
+  
+times = \[\]  
+for i in range\(10\):  
+    start = time\.time\(\)  
+    segments = list\(db\.parsed\_segments\.find\(query\)\)  
+    elapsed = \(time\.time\(\) \- start\) \* 1000  
+    times\.append\(elapsed\)  
+```
+print\("Average:", sum\(times\)/len\(times\)\)  
+  
+```text title="7\.3 tests/benchmark\_queries\.py"
+plan = db\.parsed\_segments\.find\(query\)\.explain\(\)  
+```
+print\(plan\["executionStats"\]\["executionTimeMillis"\]\)  
+
+
+### 7\.4 tests/benchmark\_post\_migration\.py
+
+Purpose: Post\-migration single\-run benchmark and sanity check\.
+
+\# This file checks a sample segment exists and runs one query \+ explain  
+\# It converts doc\_id to string to satisfy schema\.  
+
+
+### 7\.5 tests/full\_workflow\.py
+
+Purpose: Combine insertion, migration, benchmark, and explain plan into a single flow for end\-to\-end verification\.
+
+\# Steps executed:  
+\# 1\) Apply migrations/indexes  
+\# 2\) Insert missing stress data  
+\# 3\) Run benchmark queries and print results  
+
+
+## 8\. storage/mongo\_schema\.md \(documentation\)
+
+This markdown file contains the schema overview, index list, TTL rules, and summarized benchmark results\. Keep this file under storage/mongo\_schema\.md for team review\.
+
+Example content is in the file; ensure it contains index list including tenant\_id\_1\_doc\_id\_1, text text index, and TTL entry\.
+
+## 9\. Troubleshooting & Issues encountered
+
+```text title="9\. Troubleshooting & Issues encountered"
+Below are the common issues encountered during Week 5 and how they were fixed \(record these in the doc for team context\):
+
+```
+\- ModuleNotFoundError: No module named 'storage' — Run scripts using module syntax from project root: python \-m tests\. or add project root to PYTHONPATH\.
+
+```text title="9\. Troubleshooting & Issues encountered"
+\- Document failed validation — Fix: convert DOC\['\_id'\] \(ObjectId\) to string before inserting into parsed\_segments\. Use DOC\_ID = str\(DOC\['\_id'\]\)\.
+
+```
+\- mongodump not found in PowerShell/VS Code — Ensure $mongoDumpPath points to full path including mongodump\.exe; or add tools bin to PATH\.
+
+## 10\. Acceptance Criteria & Benchmark Results
+
+Acceptance: Queries for segments by doc\_id and tenant\_id must be 200ms for sample data\.
+
+Representative benchmark results from runs:
+
+\- Average query time over multiple runs: ~85 \- 140 ms \(varies by dataset size\)\.
+
+\- Example run: Average 139\.42 ms \(one iteration peaked at 250\.98 ms due to local spike\)\.
+
+\- Index used consistently: tenant\_id\_1\_doc\_id\_1
+
+## 11\. How to run \(step\-by\-step\)
+
+1\. Activate virtual env: \.venv\\Scripts\\Activate\.ps1
+
+2\. Ensure MongoDB is running and accessible and MONGO\_URI set if not default\.
+
+3\. Apply migrations \(from project root\):
+
+```text title="11\. How to run \"
+python \-m storage\.migrations\.v2\_harden\_parsed\_segments
+
+```
+4\. Run stress insertion: \(from project root\)
+
+```text title="11\. How to run \"
+python \-m tests\.stress\_test\_parsed\_segments
+
+```
+5\. Run benchmark:
+
+```text title="11\. How to run \"
+python \-m tests\.stress\_benchmark  
+python \-m tests\.benchmark\_queries  
+python \-m tests\.benchmark\_post\_migration
+
+```
+6\. Run backup manually to verify:
+
+\.\\scripts\\backup\_mongosh\.ps1  \# in PowerShell \(ensure execution policy bypass\)
+
+## 12\. Next steps & Recommendations
+
+\- Consider bulk insert \(insert\_many\) in stress scripts for speed\.
+
+\- Monitor p95 and p99 latencies, not just average\.
+
+\- Configure automated Task Scheduler job for scripts/backup\_mongosh\.ps1 if desired\.
+
+\- Consider sharding/partitioning if dataset grows beyond single\-node IO capacity\.
+
+\- Add CI job to run benchmark script on staging after migrations\.
+
+Generated for SmartIDH3 \- Week 5\. Includes exact file names and instructions as requested\.

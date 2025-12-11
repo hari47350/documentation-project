@@ -1,0 +1,130 @@
+
+--- 
+```text title="week1.md snippet 1"
+id: week1
+title: Week 01 — Teamc
+sidebar_label: Week 01
+```
+---
+
+# Week 5 Documentation \- SmartIDH3
+
+  
+This document summarizes the work completed during Week 5 of the SmartIDH3 project\.   
+The primary focus was on MongoDB performance benchmarking, validation fixes post\-migration,   
+and verifying index efficiency for the \`parsed\_segments\` collection\.  
+
+
+## 1\. Environment Setup
+
+  
+```text title="week1.md snippet 2"
+Before executing the benchmarking scripts, the environment was prepared as follows:  
+```
+  
+```text title="week1.md snippet 3"
+1\. Created a Python virtual environment:  
+```
+   &gt; python \-m venv \.venv  
+  
+```text title="week1.md snippet 4"
+2\. Activated the virtual environment:  
+```
+   &gt; \.venv\\Scripts\\activate  
+  
+```text title="week1.md snippet 5"
+3\. Installed dependencies:  
+```
+   &gt; pip install pymongo dnspython  
+  
+```python
+4\. Verified MongoDB connection using the helper function \`get\_db\(\)\` from \`storage\.mongo\_client\`\.  
+```
+
+
+## 2\. Benchmarking Scripts
+
+  
+The following scripts were developed and executed to test the performance of MongoDB queries   
+```text title="week1.md snippet 6"
+and validate schema compliance:  
+```
+
+
+### 2\.1 stress\_test\_parsed\_segments\.py
+
+  
+This script performs a bulk insertion of 10,000 parsed segments to stress test MongoDB\.  
+```python
+It ensures the schema adheres to validation rules \(\`doc\_id\` as string, etc\.\)\.  
+```
+  
+```text title="week1.md snippet 7"
+Key Steps:  
+```
+\- Fetch one document from \`raw\_documents\` to extract a valid \`doc\_id\`\.  
+\- Convert \`ObjectId\` to string to satisfy JSON schema\.  
+\- Insert test data with cyclic tenant IDs and page numbers\.  
+
+
+### 2\.2 stress\_benchmark\.py
+
+  
+This script measures MongoDB query performance under load conditions\.  
+It executes repeated find queries on the \`parsed\_segments\` collection   
+and calculates the average query response time over multiple iterations\.  
+
+
+### 2\.3 full\_workflow\.py
+
+  
+Combines both data insertion and benchmarking in a single workflow\.   
+It helps to validate the real\-world performance of the system post data population\.  
+
+
+### 2\.4 benchmark\_post\_migration\.py
+
+  
+Post\-migration validation script ensures all document structures comply with   
+MongoDB’s JSON schema\. It runs query benchmarks and validates index usage\.  
+
+
+## 3\. Common Issues and Fixes
+
+  
+```text title="week1.md snippet 8"
+Issue: Document failed validation with error:   
+```
+\`doc\_id type did not match, considered ObjectId instead of string\.\`  
+  
+```text title="week1.md snippet 9"
+Fix:  
+Converted \`ObjectId\` to string using:  
+```
+&gt; DOC\_ID = str\(DOC\["\_id"\]\)  
+  
+After applying this fix, all insertions and benchmarks executed successfully\.  
+
+
+## 4\. Benchmark Results
+
+  
+Performance benchmarks indicated average query execution time between 85–140 ms,   
+which meets the target threshold of &amp;lt;200 ms\.  
+  
+```text title="week1.md snippet 10"
+Example Output:  
+Iteration 1: Query returned 9701 segments in 250\.98 ms  
+Iteration 10: Query returned 9701 segments in 95\.05 ms  
+Average query time: 139\.42 ms  
+Index Used: tenant\_id\_1\_doc\_id\_1  
+```
+
+
+## 5\. Conclusion
+
+  
+The Week 5 tasks successfully validated MongoDB indexing and query optimization post migration\.  
+The benchmark results confirmed that the system performs efficiently with large\-scale datasets\.  
+Schema validation errors were identified and resolved, ensuring data consistency across collections\.  
+

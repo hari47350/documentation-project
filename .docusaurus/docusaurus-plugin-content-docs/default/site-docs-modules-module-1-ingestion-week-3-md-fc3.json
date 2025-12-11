@@ -1,0 +1,27 @@
+{
+  "id": "modules/module1/Ingestion/week3",
+  "title": "Week 03 — Teama",
+  "description": "Project: smartidh3",
+  "source": "@site/docs/modules/module1/Ingestion/week3.md",
+  "sourceDirName": "modules/module1/Ingestion",
+  "slug": "/modules/module1/Ingestion/week3",
+  "permalink": "/docs/modules/module1/Ingestion/week3",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "week3",
+    "title": "Week 03 — Teama",
+    "sidebar_label": "Week 03"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Week 02",
+    "permalink": "/docs/modules/module1/Ingestion/week2"
+  },
+  "next": {
+    "title": "Week 04",
+    "permalink": "/docs/modules/module1/Ingestion/week4"
+  }
+}
