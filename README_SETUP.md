@@ -1,7 +1,7 @@
 # Project Docs — Setup & Run
 
 ## Prereqs
-- Node.js >=18, npm
+- Node.js >=20, npm
 - Python 3.10+
 - pip
 
